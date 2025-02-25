@@ -20,7 +20,7 @@ public class TestController {
 	public String display(Model model) {
 		
 		model.addAttribute("name", "Rohith");
-	
+
 		return "displayName";
 	}
 }
