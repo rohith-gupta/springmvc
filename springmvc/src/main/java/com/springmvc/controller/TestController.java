@@ -30,7 +30,7 @@ public class TestController {
 		
 		ModelAndView mv = new ModelAndView();
 		
-		mv.addObject("name", "Rohith Gupta");
+		mv.addObject("name", "Rohith Marri");
 		
 		mv.setViewName("display2");
 		
