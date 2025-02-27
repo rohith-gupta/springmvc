@@ -3,6 +3,8 @@ package com.springmvc.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -26,17 +28,32 @@ public class TestController {
 	}
 	
 	@RequestMapping("/display2")
-	public ModelAndView display2() {
+	public String display2() {
 		
-		ModelAndView mv = new ModelAndView();
+		/*
+		 * ModelAndView mv = new ModelAndView();
+		 * 
+		 * mv.addObject("name", "Rohith Marri");
+		 * 
+		 * mv.setViewName("display2");
+		 */
 		
-		mv.addObject("name", "Rohith Marri");
 		
-		mv.setViewName("display2");
+		return "display2";
 		
-		
-		return mv;
-		
+	}
+	
+	@RequestMapping(path = "/welcome", method = RequestMethod.POST)
+	public String welcome(
+				@RequestParam(name = "username",  required=false) String username,
+				@RequestParam("email") String email,
+				@RequestParam("password") String pass,
+				Model model) {
+			model.addAttribute("username",username);
+			model.addAttribute("email",email);
+			model.addAttribute("pass",pass);
+			
+		return"welcome";
 	}
 }
  
