@@ -44,16 +44,18 @@ public class TestController {
 	}
 	
 	@RequestMapping(path = "/welcome", method = RequestMethod.POST)
-	public String welcome(
+	public ModelAndView welcome(
 				@RequestParam(name = "username",  required=false) String username,
 				@RequestParam("email") String email,
 				@RequestParam("password") String pass,
-				Model model) {
-			model.addAttribute("username",username);
-			model.addAttribute("email",email);
-			model.addAttribute("pass",pass);
+				ModelAndView mv) {
+			mv.addObject("username",username);
+			mv.addObject("email",email);
+			mv.addObject("pass",pass);
 			
-		return"welcome";
+			mv.setViewName("welcome");
+			
+		return mv;
 	}
 }
  
